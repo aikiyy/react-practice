@@ -1,0 +1,9 @@
+{
+  "name": "react-practice",
+  "version": "1.0.0",
+  "description": "sample application for react with webpack",
+  "main": "index.js",
+  "repository": "git@github.com:aikiyy/react-practice.git",
+  "author": "aikiyy",
+  "license": "MIT"
+}
