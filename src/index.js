@@ -3,18 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 
-class Square extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      value: null,
-    };
-  }
-
+function Square(props) {
   render() {
     return (
       <button className="square" onClick={() => this.props.onClick()}>
-        {this.props.value}
+        {props.value}
       </button>
     );
   }
