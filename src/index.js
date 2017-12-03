@@ -42,8 +42,8 @@ class Board extends React.Component {
 }
 
 class Game extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       history: [{
         squares: Array(9).fill(null)
@@ -61,7 +61,7 @@ class Game extends React.Component {
   }
 
   handleClick(i) {
-    var history = this.state.history;
+    var history = this.state.history.slice(0, this.state.stepNumber + 1);
     var current = history[history.length - 1];
     const squares = current.squares.slice();
     if (calculateWinner(squares) || squares[i]) {
