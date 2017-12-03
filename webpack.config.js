@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: __dirname + "/src/index.jsx", // トランスパイル対象
+  entry: __dirname + "/src/index.js", // トランスパイル対象
   output: {
     path: __dirname + '/dist', // 出力先ディレクトリ
     filename: 'bundle.js' // 入力されたファイルをまとめて出力するときのファイル名
@@ -9,14 +9,21 @@ module.exports = {
   module: {
     rules: [
       {
+        // ローダーの処理対象ファイル
         test: /\.js[x]?$/,
+        // ローダーの処理対象から外すディレクトリ
         exclude: /node_modules/,
-        loader: "babel-loader", // Babelをwebpackで利用できるようにする
-        options:{
-          presets: ['react', 'es2015'] // reactとes2015をトランスパイル対象とする
+        loader: 'babel-loader',
+        query: {
+          presets: ["es2015", "react"],
         }
+      },
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        loaders: ['style-loader', 'css-loader'],
       }
-    ]
+    ],
   },
   devServer: {
     contentBase: path.resolve(__dirname, "dist"), // distディレクトリのファイルを確認する
